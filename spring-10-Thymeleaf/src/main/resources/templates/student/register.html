@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{index.page.title}"></title>
+
+    <link th:href="@{/css/bootstrap-4.1.3-dist/css/bootstrap.css}" rel="stylesheet">
+
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+</head>
+<body>
+<!--Bootstrap Integration-->
+<h2 class="display-1 text-danger">Welcome to Register Form</h2>
+
+<h2 class="cydeo">My Custom CSS</h2>
+
+<!--Image Integration-->
+<img th:src="@{/images/welcome-38249.png}">
+
+        <!--Display Value of Model-->
+        <h2 th:text="${students.get(0).firstName}"></h2>
+        <h2 th:text="${students.get(0).lastName}"></h2>
+
+        <!--Concatenation-->
+        <h2 th:text="${ 'Hello ' + students.get(0).firstName}"></h2>
+        <h2 th:text="${students.get(0).firstName + ' ' + students.get(0).lastName + ' ' + students.get(0).age + ' ' + students.get(0).state }"></h2>
+        <h2 th:text="${students.get(1).firstName + ' ' + students.get(1).lastName}"></h2>
+
+        <!--Link URLs-->
+        <h2>
+            <a th:href="@{https://amazon.com}">Amazon Page</a>
+        </h2>
+
+        <h2>
+            <a th:href="@{/student/welcome}">welcome</a>
+        </h2>
+
+        <!--Adding parameters in Link-->
+        <h2>
+            <a th:href="@{/student/welcome(name=3)}">link</a>
+        </h2>
+
+        <h2>
+            <a th:href="@{/student/welcome(name=${students.get(0).firstName})}">link2</a>
+        </h2>
+
+        <!--Iteration-->
+        <h2>Printing my list</h2>
+<ul>
+    <li th:each=" student : ${students}" th:text="${student}"></li>
+</ul>
+
+        <h2>only first names</h2>
+<ul>
+    <li th:each=" student : ${students}" th:text="${student.firstName}"></li>
+</ul>
+        <h2>only last names</h2>
+<ul>
+    <li th:each=" student : ${students}" th:text="${student.lastName}"></li>
+</ul>
+
+
+        <h2>Printing Students in the table</h2>
+
+<table>
+    <thread>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+            <td>State</td>
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each=" student : ${students}">
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.age}"></td>
+        <td th:text="${student.state}"></td>
+    </tr>
+
+    </tbody>
+
+</table>
+
+<!--Conditional Logic-->
+<div th:text="${students.get(0).age > 25 ? 'Eligible' : 'Not Eligible'}"></div>
+<div>
+    <span th:if="${students.get(0).getState() == 'Arizona'}"></span>
+    <span th:unless="${students.get(0).getState() == ' No Arizona'}"></span>
+</div>
+
+</body>
+</html>
