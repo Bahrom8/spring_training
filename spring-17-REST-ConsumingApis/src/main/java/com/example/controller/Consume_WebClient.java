@@ -29,7 +29,8 @@ public class Consume_WebClient {
     public Flux<MovieCinemaDTO> readAllCinemaFlux(){
 
         return Flux.fromIterable(movieCinemaService.findAll());
-
+//first, I created some endpoints with reactive way by using with mona and flux
+//after I created then I consume it at line 70
     }
 
 //    @GetMapping("/mono-movie-cinema/{id}")
