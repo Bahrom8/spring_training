@@ -9,7 +9,6 @@ import java.util.List;
 public interface DepartmentRepository extends JpaRepository<Department, String> {
 
     //Display all departments in the furniture department
-    @Query("SELECT " )
     List<Department> findAllByDepartment(String department);
 
     //Display all departments in the Health Division
